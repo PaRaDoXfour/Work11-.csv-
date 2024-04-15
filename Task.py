@@ -5,6 +5,16 @@ try:
     with open('ЛР_11.csv', mode='r', newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file)
 
+        # Виведення вхідних даних з файлу
+        print("Вхідні дані:")
+        for row in reader:
+            print(f"Year: {row['Time']} Population: {row['Value']};")
+        print()
+
+        # Повторне встановлення позиції читання до початку файлу
+        file.seek(0)
+        next(reader)  # Пропускаємо заголовок
+
         # Ініціалізуємо змінні для збереження року з найменшою та найбільшою популяцією
         min_year = None
         min_population = float('inf')
